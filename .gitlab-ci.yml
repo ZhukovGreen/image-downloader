@@ -1,0 +1,18 @@
+image: playpauseandstop/docker-python:3.2.0-py38
+
+stages:
+  - lint
+  - test
+
+lint:
+  stage: lint
+  before_script: []
+  script:
+    - pre-commit run --all
+
+test:
+  stage: test
+  before_script:
+    - poetry install
+  script:
+    - poetry run pytest
